@@ -1,0 +1,32 @@
+package ui;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Links {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver = new ChromeDriver();
+		driver.get("https://www.amazon.in/");
+		driver.manage().window().maximize();
+		
+		List<WebElement> alltags = driver.findElements(By.tagName("a"));
+		System.out.println("Total tags : "+alltags.size());
+		
+		for(int i=0;i<alltags.size();i++)
+		{
+			//System.out.println("Links : "+alltags.get(i).getAttribute("href"));
+			System.out.println("Link Name : "+alltags.get(i).getText());
+		}
+		
+	}
+
+}
